@@ -12,8 +12,6 @@ homework/session_10/ex4/
 ├── commands.sh               # Script tự động thực thi toàn bộ kịch bản
 ├── README.md                 # Hướng dẫn chi tiết & báo cáo kết quả
 └── screenshots/              # Thư mục lưu 2 ảnh kết quả trả về
-    ├── ping_db_server.png    # Ảnh 1: Ping giải mã IP nội bộ thành công
-    └── data_persistence.png  # Ảnh 2: Dữ liệu DB nguyên vẹn sau khi tái tạo container
 ```
 
 ---
@@ -71,8 +69,6 @@ docker exec -it app-container ping -c 2 db-server
 >   - Thống kê: `2 packets transmitted, 2 packets received, 0% packet loss`.
 > - **Lưu file ảnh tại:** `screenshots/ping_db_server.png`
 
-![Lệnh ping db-server từ Backend container giải mã thành công IP nội bộ](screenshots/ping_db_server.png)
-
 ---
 
 ### Kết quả 2: Dữ liệu DB nguyên vẹn sau khi tái tạo container DB
@@ -118,18 +114,3 @@ docker exec -i db-server psql -U myuser -d mydb -c "SELECT * FROM users;"
 >   - Lệnh xóa `docker rm -f db-server` thành công.
 >   - Container mới được khởi tạo với ID mới.
 >   - Bảng kết quả truy vấn `SELECT * FROM users;` **vẫn hiển thị đầy đủ 2 bản ghi** (`Nguyen Van A`, `Tran Thi B`), chứng minh dữ liệu lưu trên Volume không bị mất.
-> - **Lưu file ảnh tại:** `screenshots/data_persistence.png`
-
-![Dữ liệu DB nguyên vẹn sau khi tái tạo container DB](screenshots/data_persistence.png)
-
----
-
-## 5. Hướng Dẫn Nộp Bài Lên GitHub
-Sau khi chụp 2 ảnh trên và lưu vào thư mục `screenshots/`:
-```bash
-git add commands.sh README.md screenshots/
-git commit -m "feat(ss10-ex4): custom bridge network and named volume data persistence"
-git push origin <your-branch>
-```
-Đường dẫn trên GitHub: `homework/session_10/ex4/`.
-
